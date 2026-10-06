@@ -1496,6 +1496,209 @@
           opacity: 0;
         }
       }
+      .trajectory-stairs {
+        width: 100%;
+        height: 220px;
+        margin: 22px auto 8px;
+        flex-shrink: 0;
+      }
+      .trajectory-stairs .royal-princess {
+        animation-delay: .15s !important;
+      }
+      .trajectory-stairs .royal-crown {
+        animation-delay: 4.8s !important;
+      }
+
+      .royal-stairs {
+        position: relative;
+        width: min(88%, 330px);
+        height: 235px;
+        margin: 0 auto 8px;
+        overflow: hidden;
+      }
+
+      .royal-stairs .stair {
+        position: absolute;
+        bottom: 18px;
+        width: 62px;
+        height: 22px;
+        border-radius: 5px 5px 2px 2px;
+        background: linear-gradient(180deg, #ffcf5a, #b8860b);
+        box-shadow: 0 0 12px rgba(255, 207, 90, 0.45);
+      }
+
+      .royal-stairs .s1 { left: 3%; }
+      .royal-stairs .s2 { left: 14%; bottom: 40px; }
+      .royal-stairs .s3 { left: 25%; bottom: 62px; }
+      
+
+      .royal-princess {
+        position: absolute;
+        left: 5%;
+        bottom: 38px;
+        font-size: 38px;
+        z-index: 2;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,.45));
+        opacity: 0;
+      }
+
+      .royal-crown {
+        position: absolute;
+        left: 74%;
+        top: 22px;
+        font-size: 34px;
+        opacity: 0;
+        filter: drop-shadow(0 0 10px rgba(255,207,90,.9));
+      }
+
+      .royal-stairs + .tx {
+        position: relative;
+        z-index: 3;
+      }
+
+      .s.on .royal-princess {
+        animation: princessClimb 5.6s cubic-bezier(.45,.05,.2,1) .35s forwards;
+      }
+
+      .s.on .royal-crown {
+        animation: crownAppear .8s ease-out 5s forwards;
+      }
+
+      @keyframes princessClimb {
+        0%   { left: 5%;  bottom: 38px;  opacity: 0; transform: scale(.72); }
+        8%   { opacity: 1; }
+        18%  { left: 16%; bottom: 60px;  transform: scale(.78); }
+        30%  { left: 27%; bottom: 82px;  transform: scale(.84); }
+        42%  { left: 38%; bottom: 104px; transform: scale(.90); }
+        54%  { left: 49%; bottom: 126px; transform: scale(.96); }
+        66%  { left: 60%; bottom: 148px; transform: scale(1.02); }
+        78%  { left: 71%; bottom: 170px; transform: scale(1.08); }
+        88%  { left: 74%; bottom: 188px; transform: scale(1.14); }
+        100% { left: 74%; bottom: 188px; opacity: 1; transform: scale(1.18); }
+      }
+
+      @keyframes crownAppear {
+        from { opacity: 0; transform: translateY(-18px) scale(.4) rotate(-10deg); }
+        to   { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+      }
+
+      .typing-love {
+        display: inline-block;
+        min-height: 1.2em;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 700;
+        letter-spacing: .16em;
+        color: #fff;
+        text-shadow: 0 0 18px rgba(255, 95, 168, .75);
+      }
+
+      .typing-love::after {
+        content: "▋";
+        display: inline-block;
+        margin-left: 3px;
+        animation: caretBlink .7s steps(1) infinite;
+      }
+
+      @keyframes caretBlink {
+        50% { opacity: 0; }
+      }
+
+      .love-story {
+        background:
+          radial-gradient(circle at 50% 35%, rgba(255,95,168,.22), transparent 35%),
+          linear-gradient(160deg, #210b38, #7b2fd0 55%, #ff5fa8);
+      }
+
+
+      .love-story.glitch {
+        background: radial-gradient(circle at 50% 35%, #3d0010, #07000a 72%);
+      }
+
+      .love-story.glitch .typing-love {
+        color: #fff;
+        text-shadow: 0 0 18px rgba(255, 26, 60, .7);
+      }
+
+      .love-story.glitch .typing-love::before,
+      .love-story.glitch .typing-love::after {
+        content: attr(data-t);
+      }
+
+      .speaker-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
+        min-height: 78px;
+      }
+
+      .speaker-line .speaker {
+        position: static;
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+      }
+
+      .speaker-line .sv {
+        margin: 0;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .speech-sequence {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      .speech-bubble {
+        position: relative;
+        max-width: 72%;
+        padding: 11px 15px;
+        border: 1px solid rgba(255,255,255,.45);
+        border-radius: 18px 18px 18px 5px;
+        background: rgba(8, 0, 12, .88);
+        box-shadow: 0 0 18px rgba(255, 26, 60, .25), inset 0 0 14px rgba(255,255,255,.04);
+        backdrop-filter: blur(5px);
+        transition: opacity .18s ease, transform .18s ease;
+      }
+
+      .speech-bubble::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        bottom: 10px;
+        width: 17px;
+        height: 17px;
+        background: rgba(8, 0, 12, .88);
+        border-left: 1px solid rgba(255,255,255,.45);
+        border-bottom: 1px solid rgba(255,255,255,.45);
+        transform: skewX(-25deg) rotate(18deg);
+      }
+
+      .speech-bubble .sv {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 26, 60, .45);
+      }
+
+      .speaker-line.dog-line {
+        margin-top: 16px;
+      }
+
+      .speaker-line.dog-line .speaker {
+        width: 68px;
+        height: 68px;
+        flex-basis: 68px;
+      }
+
+      .speaker-line.dog-line .speech-bubble {
+        max-width: 74%;
+      }
+
       .hint {
         position: absolute;
         bottom: 12px;
@@ -1525,9 +1728,7 @@
     <div id="app">
       <div id="story">
         <div class="bars">
-          <i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i
-          ><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i
-          ><i><b></b></i><i><b></b></i>
+<i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>          <i><b></b></i>
         </div>
 
         <svg width="0" height="0" style="position: absolute">
@@ -2163,102 +2364,6 @@
               <img data-k="n2" style="object-position: 50% 18%" alt="" />
             </figure>
           </div>
-          <div class="fx" style="bottom: 14px; left: 14px; right: 14px">
-            <svg class="trail" viewBox="0 0 360 80">
-              <path
-                class="tr"
-                d="M8 72 C60 72 70 52 120 54 S190 32 230 36 S300 16 322 20"
-                fill="none"
-                stroke="#ff1a3c"
-                stroke-width="2.5"
-                stroke-dasharray="400"
-                stroke-linecap="round"
-              />
-              <circle
-                class="fp"
-                style="--d: 0.3s"
-                cx="30"
-                cy="70"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 0.6s"
-                cx="58"
-                cy="66"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 0.9s"
-                cx="88"
-                cy="58"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 1.2s"
-                cx="118"
-                cy="54"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 1.5s"
-                cx="148"
-                cy="48"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 1.8s"
-                cx="178"
-                cy="42"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 2.1s"
-                cx="206"
-                cy="38"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 2.4s"
-                cx="236"
-                cy="34"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 2.7s"
-                cx="264"
-                cy="28"
-                r="4"
-                fill="#ff7a93"
-              />
-              <circle
-                class="fp"
-                style="--d: 3s"
-                cx="292"
-                cy="22"
-                r="4"
-                fill="#ff7a93"
-              />
-              <g class="fp" style="--d: 3.5s" transform="translate(310 -6)">
-                <use href="#crown" width="40" height="32" />
-              </g>
-            </svg>
-          </div>
           <div class="tx">
             <h3 class="gl" data-t="A mulher que você vem se tornando">
               A mulher que você vem se tornando
@@ -2278,6 +2383,13 @@
               MAS EM COMPENSAÇÃO, MINHA FILHA, NA CAMINHADA VOCÊ AUMENTOU FOI
               UNS MIL QUILÔMETROS DE PASSOS À FRENTE!
             </p>
+            <div class="royal-stairs trajectory-stairs" aria-hidden="true">
+              <span class="stair s1"></span>
+              <span class="stair s2"></span>
+              <span class="stair s3"></span>
+              <span class="royal-princess">👸🏻</span>
+              <span class="royal-crown">👑</span>
+            </div>
           </div>
         </section>
 
@@ -2287,41 +2399,8 @@
               <img data-k="r" style="object-position: 50% 22%" alt="" />
             </figure>
           </div>
-          <div
-            class="fx"
-            style="
-              bottom: 16px;
-              left: 0;
-              right: 0;
-              display: flex;
-              justify-content: center;
-            "
-          >
-            <svg class="crownA" viewBox="0 0 40 32"><use href="#crown" /></svg>
-          </div>
-          <span
-            class="spark"
-            style="bottom: 58px; left: 30%; color: #ffcf5a; z-index: 2"
-            >✦</span
-          ><span
-            class="spark"
-            style="
-              bottom: 30px;
-              left: 62%;
-              color: #ffcf5a;
-              z-index: 2;
-              animation-delay: 0.5s;
-            "
-            >✧</span
-          ><span
-            class="spark"
-            style="bottom: 64px; right: 22%; z-index: 2; animation-delay: 1s"
-            >✦</span
-          ><span
-            class="spark"
-            style="bottom: 26px; left: 24%; z-index: 2; animation-delay: 0.8s"
-            >✧</span
-          >
+          
+
           <div class="tx">
             <h3 class="gl" data-t="Mais rara, mais rainha">
               Mais rara, mais rainha
@@ -2380,14 +2459,14 @@
             <p>
               Hoje, portanto, os mortais se reúnem para prestar suas homenagens.
             </p>
-            <p class="sv">👑 Salve à divinda Samara.</p>
-            <p class="sv">✨ Salve sua beleza.</p>
-            <p class="sv">👸🏻 Salve sua história.</p>
-            <p class="sv">🔥 Salve a mulher que você está se tornando.</p>
-            <p style="margin-top: 8px">
-              Que seu reinado neste novo ciclo seja longo, próspero e cheio de
-              histórias incríveis.
-            </p>
+            <div class="speaker-line speech-sequence" id="animalSpeech">
+              <svg id="speechAnimal" class="cat speaker tabby" aria-hidden="true">
+                <use href="#cat" />
+              </svg>
+              <div class="speech-bubble">
+                <p class="sv" id="speechText">👑 Salve à divinda Samara.</p>
+              </div>
+            </div>
             <p class="q">Feliz aniversário, Sasah! ❤️</p>
             <p>
               Que você nunca se esqueça: existem pessoas bonitas, existem
@@ -2397,6 +2476,46 @@
             <p class="q">Você é uma delas. 👑</p>
             <br>
           </div>
+        </section>
+
+
+        <section class="s glitch love-story">
+          <span class="spark" style="top: 18%; left: 14%">✦</span>
+          <span class="spark" style="top: 25%; right: 14%; animation-delay: .5s">✧</span>
+          <span class="spark" style="bottom: 22%; left: 18%; animation-delay: .9s">✦</span>
+          <span class="spark" style="bottom: 26%; right: 18%; animation-delay: 1.2s">✧</span>
+
+          <svg class="cat bob bege" style="top: 11%; left: 8%; width: 72px; height: 72px">
+            <use href="#cat" />
+          </svg>
+          <svg class="cat bob branco" style="top: 13%; right: 8%; width: 72px; height: 72px; animation-delay: .6s">
+            <use href="#cat" />
+          </svg>
+
+          <h1 class="gl" data-t="e claro..." style="font-size: clamp(48px, 14vw, 78px)">e claro...</h1>
+        </section>
+
+        <section class="s glitch love-story">
+          <span class="spark" style="top: 17%; left: 13%">❤</span>
+          <span class="spark" style="top: 23%; right: 13%; animation-delay: .6s">✦</span>
+          <span class="spark" style="bottom: 25%; left: 18%; animation-delay: 1s">❤</span>
+          <span class="spark" style="bottom: 20%; right: 17%; animation-delay: 1.4s">✧</span>
+
+          <svg class="cat bob tabby" style="top: 10%; right: 9%; width: 74px; height: 74px">
+            <use href="#cat" />
+          </svg>
+          <svg class="cat bob preto" style="bottom: 12%; left: 8%; width: 74px; height: 74px; animation-delay: .7s">
+            <use href="#cat" />
+          </svg>
+
+          <p style="font-size: clamp(17px, 4.8vw, 23px); color: #f8ddff; margin-bottom: 16px">
+            nosso jeito de dizer aquilo que não precisa ser explicado
+          </p>
+          <h1 class="typing-love gl" data-t="MI MUHE YE" data-love="MI MUHE YE" aria-label="MI MUHE YE"></h1>
+          <p style="margin-top: 22px; max-width: 86%">
+            porque entre a gente, até um código estranho consegue dizer
+            <strong>“eu te amo”</strong> sem precisar ser algo “uau”. ❤️
+          </p>
         </section>
 
         <section class="s noir dev">
@@ -2466,7 +2585,7 @@
         B = [...document.querySelectorAll(".bars i")],
         D = [
           4500, 5500, 8000, 6500, 6000, 10000, 24000, 30000, 20000, 30000,
-          34000, 12000,
+          34000, 4200, 9000, 12000,
         ];
       let i = 0,
         t;
@@ -2535,6 +2654,47 @@
         const r = st.getBoundingClientRect();
         go(e.clientX - r.left < r.width / 3 ? i - 1 : i + 1);
       });
+      const loveText = document.querySelector(".typing-love");
+      if (loveText) {
+        const phrase = loveText.dataset.love || "MI MUHE YE";
+        let pos = 0;
+        const typeLove = () => {
+          pos = Math.min(pos + 1, phrase.length);
+          loveText.textContent = phrase.slice(0, pos);
+          if (pos < phrase.length) setTimeout(typeLove, 260);
+        };
+        setTimeout(typeLove, 700);
+      }
+
+      // Um único elemento de diálogo: troca personagem + fala a cada 1 segundo.
+      const animalSpeech = document.getElementById("animalSpeech");
+      const speechAnimal = document.getElementById("speechAnimal");
+      const speechText = document.getElementById("speechText");
+      const speeches = [
+        { type: "cat", fur: "tabby", text: "👑 Salve à divinda Samara." },
+        { type: "cat", fur: "bege", text: "✨ Salve sua beleza." },
+        { type: "cat", fur: "preto", text: "👸🏻 Salve sua história." },
+        { type: "cat", fur: "branco", text: "🔥 Salve a mulher que você está se tornando." },
+        { type: "dog", fur: "", text: "Que seu reinado neste novo ciclo seja longo, próspero e cheio de histórias incríveis." },
+      ];
+      let speechIndex = 0;
+      let speechTimer;
+      const renderSpeech = () => {
+        const item = speeches[speechIndex];
+        speechAnimal.setAttribute("class", "cat speaker" + (item.fur ? " " + item.fur : ""));
+        speechAnimal.innerHTML = `<use href="#${item.type}" />`;
+        speechText.textContent = item.text;
+      };
+      if (animalSpeech) {
+        renderSpeech();
+        speechTimer = setInterval(() => {
+          const active = animalSpeech.closest(".s")?.classList.contains("on");
+          if (!active) return;
+          speechIndex = (speechIndex + 1) % speeches.length;
+          renderSpeech();
+        }, 1000);
+      }
+
       document.querySelectorAll("img[data-k]").forEach((i) => {
         i.src = document.querySelector(
           ".trio ." + i.dataset.k + ' img,.lib[data-id="' + i.dataset.k + '"]',
